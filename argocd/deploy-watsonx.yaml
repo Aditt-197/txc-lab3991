@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------------
+# TODO: Replace <YOUR-REPO-URL> with the URL of your forked GitHub repository.
+# Example: https://github.com/your-username/lab3991.git
+#
+# TODO: Replace <YOUR-NAMESPACE> with your assigned namespace.
+# Example: cpd-student1
+# -----------------------------------------------------------------------------
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: deploy-watsonx
+  namespace: openshift-gitops
+spec:
+  project: default
+
+  sources:
+    - repoURL: <YOUR-REPO-URL>
+      targetRevision: main
+      path: helm/install-watsonx
+      helm:
+        releaseName: watsonx
+        valueFiles:
+          - $overrides/overrides/values.yaml
+    - repoURL: <YOUR-REPO-URL>
+      targetRevision: main
+      ref: overrides
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: <YOUR-NAMESPACE>
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=false

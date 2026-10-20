@@ -1,0 +1,2 @@
+IBM Software Hub cluster-scoped CRDs and RBAC have been applied.
+Operator namespace: {{ .Values.global.operatorNamespace }}

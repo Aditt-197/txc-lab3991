@@ -1,0 +1,12 @@
+global:
+  operatorNamespace: cpd-operators
+  instanceNamespace: cpd
+
+zen:
+  zen_rsi_enabled: true
+
+cpfs:
+  imageRegistryNamespaceOperator: cpopen
+  imageRegistryNamespaceOperand: cpopen/cpfs
+  labels:
+  clusterLabels:

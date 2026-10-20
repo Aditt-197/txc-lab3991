@@ -1,0 +1,11 @@
+global:
+  operatorNamespace: cpd-operators
+  instanceNamespace: cpd
+
+wsPipelines:
+  caseVersion: 12.1.0
+  cpd4Release: 5.3.1
+  buildNumber: 67
+  addOnId: ws-pipelines
+
+imagePullSecrets: []

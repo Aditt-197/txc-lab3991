@@ -1,0 +1,26 @@
+# =============================================================================
+# Student Override Values
+# =============================================================================
+# Fill in the fields marked TODO below, then apply each ArgoCD Application
+# manifest from the argocd/ directory.
+#
+# Do NOT modify the chart values.yaml files directly — all student-specific
+# settings belong here.
+# =============================================================================
+
+global:
+  # TODO: Set this to your assigned operator namespace.
+  # Example: cpd-operators-student1
+  operatorNamespace: ""
+
+  # TODO: Set this to your assigned instance namespace.
+  # Example: cpd-student1
+  instanceNamespace: ""
+
+zen:
+  zen:
+    # TODO: Set this to the wildcard apps hostname for your cluster ingress.
+    # Find it by running:
+    #   oc get ingresses.config/cluster -o jsonpath='{.spec.domain}'
+    # Example: apps.mycluster.example.com
+    ingressNodeHostname: ""

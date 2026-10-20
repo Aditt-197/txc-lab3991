@@ -1,0 +1,69 @@
+global:
+  operatorNamespace: cpd-operators
+  instanceNamespace: cpd
+  blockStorageClass: ocs-storagecluster-ceph-rbd
+  fileStorageClass: ocs-storagecluster-cephfs
+  imagePullPrefix: icr.io
+  licenseType: Enterprise
+  licenseAccept: true
+
+imagePullSecrets: []
+
+
+analyticsengine:
+  analyticsengine:
+    autoScaleConfig: false
+    scaleConfig: small
+    serviceConfig:
+      pullWxdImagesOnly: true
+      informerEnabled: false
+    sparkRuntimeConfig:
+      localDirScaleFactor: 10
+      maxDriverCpuCores: 5
+      maxExecutorCpuCores: 5
+      maxDriverMemory: "50g"
+      maxExecutorMemory: "50g"
+      maxNumWorkers: 50
+    controlPlaneResourceConfig:
+      replicas: 1
+      resources:
+        limits:
+          cpu: '2'
+          ephemeral-storage: 512Mi
+          memory: 4Gi
+        requests:
+          cpu: '1'
+          ephemeral-storage: 256Mi
+          memory: 2Gi
+    SparkMetaStoreEdb:
+      instances: 1
+      max_connections: 20
+      minPoolSize: 5
+      maxPoolSize: 10
+      resources:
+        requests:
+          cpu: '500m'
+          ephemeral-storage: 100Mi
+          memory: 1Gi
+        limits:
+          cpu: '1'
+          ephemeral-storage: 300Mi
+          memory: 2Gi
+    deployerAgentConfig:
+      contextTimeout: 50
+      sleepInterval: 2000
+      timeout: 300
+
+ws-pipelines:
+  wsPipelines:
+    scaleConfig: small
+
+watsonx-data:
+  watsonxData:
+    scaleConfig: small
+    enable_watsonx_platform: true
+    install_ccs_dependency: true
+
+ws:
+  ws:
+    scaleConfig: small

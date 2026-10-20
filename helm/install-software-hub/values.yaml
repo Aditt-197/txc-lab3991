@@ -1,0 +1,77 @@
+global:
+  releaseVersion: 5.3.1
+  operatorNamespace: cpd-operators
+  instanceNamespace: cpd
+  licensingNamespace: ibm-licensing
+  opaGatewayName: ibm-software-hub
+  blockStorageClass: ocs-storagecluster-ceph-rbd
+  fileStorageClass: ocs-storagecluster-cephfs
+  licenseType: Enterprise
+  licenseAccept: true
+  imagePullSecret: ibm-entitlement-key
+  tetheredNamespaces: []
+  imagePullSecrets:
+    - ibm-entitlement-key
+  components:
+    - cpd_platform
+    - cpfs
+    - zen
+    - watsonx_data
+    - ws
+    - ws_pipelines
+    - ibm-licensing
+    - scheduler
+  storageClass: ocs-storagecluster-ceph-rbd
+  scaleConfig: small
+  cmPatchMetadata: cGF0Y2hfY29tcG9uZW50c19tZXRhOgogIHBhdGNoX2luZm86CiAgICBwYXRjaF9pZDogMTEKICAgIHBhdGNoX2RhdGU6ICIyMDI2LXh4LXh4IiAjWVlZWS1NTS1ERCBUTyBCRSBBREpVU1RFRAogIGFuYWx5dGljc2VuZ2luZToKICAgIGNhc2VfdmVyc2lvbjogMTIuMS4xMQogICAgc3ViX2NoYW5uZWw6ICJ2OS4xMS4wIgogICAgY3N2X3ZlcnNpb246IDkuMTEuMAogICAgY3JfdmVyc2lvbjogNS4zLjExCiAgYmlnc3FsOgogICAgY2FzZV92ZXJzaW9uOiAxNC40LjAKICAgIHN1Yl9jaGFubmVsOiAidjE0LjQiCiAgICBjc3ZfdmVyc2lvbjogMTQuNC4wCiAgICBjcl92ZXJzaW9uOiA4LjMuNAogIGNhbnZhc2Jhc2U6CiAgICBjYXNlX3ZlcnNpb246IDEyLjEuMTEKICAgIHN1Yl9jaGFubmVsOiAidjEyLjEiCiAgICBjc3ZfdmVyc2lvbjogMTIuMS4xMQogICAgY3JfdmVyc2lvbjogMTIuMS4xMQogIGNjczoKICAgIGNhc2VfdmVyc2lvbjogMTIuMS4xMQogICAgc3ViX2NoYW5uZWw6ICJ2MTIuMSIKICAgIGNzdl92ZXJzaW9uOiAxMi4xLjExCiAgICBjcl92ZXJzaW9uOiAxMi4xLjExCiAgY29nbm9zX2FuYWx5dGljczoKICAgIGNhc2VfdmVyc2lvbjogMjkuMS44CiAgICBzdWJfY2hhbm5lbDogInYyOS4xIgogICAgY3JfdmVyc2lvbjogMjkuMS44CiAgICBjc3ZfdmVyc2lvbjogMjkuMS44CiAgY3BkX3BsYXRmb3JtOgogICAgY2FzZV92ZXJzaW9uOiA1LjQuMTEKICAgIGNzdl92ZXJzaW9uOiA2LjQuMTEKICAgIGNyX3ZlcnNpb246IDUuNC4xMQogIGNwZnM6CiAgICBjYXNlX3ZlcnNpb246IDQuMTguMgogICAgY3N2X3ZlcnNpb246IDQuMTguMgogICAgc3ViX2NoYW5uZWw6ICJ2NC4xOCIKICBkYXNoYm9hcmQ6CiAgICBjYXNlX3ZlcnNpb246IDQuMC45CiAgICBjc3ZfdmVyc2lvbjogNC4wLjkKICAgIGNyX3ZlcnNpb246IDUuMy45CiAgZGF0YV9nb3Zlcm5vcjoKICAgIGNhc2VfdmVyc2lvbjogOC4xLjIKICAgIGNzdl92ZXJzaW9uOiA4LjEuMgogICAgc3ViX2NoYW5uZWw6IHY4LjEKICAgIGNyX3ZlcnNpb246IDMuMzMuMAogIGRhdGFnYXRlOgogICAgY2FzZV92ZXJzaW9uOiAxMS4xLjExCiAgICBzdWJfY2hhbm5lbDogInY5LjEiCiAgICBjc3ZfdmVyc2lvbjogOS4xLjExCiAgICBjcl92ZXJzaW9uOiA5LjEuMTEKICBkYXRhbGluZWFnZToKICAgIGNhc2VfdmVyc2lvbjogNS4zLjIxCiAgICBzdWJfY2hhbm5lbDogInY3LjIxIgogICAgY3N2X3ZlcnNpb246IDUuMy4yMQogICAgY3JfdmVyc2lvbjogNS4zLjIxCiAgZGF0YXByb2R1Y3Q6CiAgICBjYXNlX3ZlcnNpb246IDUuMy4yMQogICAgc3ViX2NoYW5uZWw6ICJ2OC4yMSIKICAgIGNzdl92ZXJzaW9uOiA1LjMuMjEKICAgIGNyX3ZlcnNpb246IDUuMy4yMQogIGRhdGFyZWZpbmVyeToKICAgIGNhc2VfdmVyc2lvbjogMTIuMS4xMQogICAgY3N2X3ZlcnNpb246IDEyLjEuMTEKICAgIHN1Yl9jaGFubmVsOiAidjEyLjEiCiAgICBjcl92ZXJzaW9uOiAxMi4xLjExCiAgc
+  installConfigImageName: cpopen/cpd/olm-utils-v4
+  installConfigImageTag: 5.3.1
+
+cpd-platform:
+  Chart:
+    name: ibm-software-hub
+
+postgresql:
+  imagePullSecrets:
+    - name: ibm-entitlement-key
+
+ibm-common-service-operator:
+  cpfs:
+    imageRegistryNamespaceOperator: cpopen
+    imageRegistryNamespaceOperand: cpopen/cpfs
+    labels:
+    # CR configurations
+    size: small
+    # Red Hat OCP authentication configuration
+    roksEnabled: false
+
+# -----------------------------------------------------------------------------
+# zen.zen.ingressNodeHostname is intentionally left blank here.
+# Each student sets their own cluster ingress hostname in their override file:
+#   overrides/studentN/values.yaml
+# Find the value with:
+#   oc get ingresses.config/cluster -o jsonpath='{.spec.domain}'
+# -----------------------------------------------------------------------------
+zen:
+  zen:
+    ingressNodeHostname: ""
+
+
+ccs:
+  ccs:
+    scaleConfig: small
+    cc_home_copy_options: -ru
+    conn_home_copy_options: -ru
+
+opencontent-opensearch:
+  opencontentOpensearch:
+    operatorImagePullPrefix: icr.io
+    entitledImagePullPrefix: cp.icr.io
+
+
+platform-config:
+  applyEntitlement:
+    - entitlement: watsonx-data
+      production: true
+    - entitlement: watsonx-ai
+      production: false
