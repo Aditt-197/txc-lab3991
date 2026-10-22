@@ -14,20 +14,20 @@ spec:
   project: default
 
   sources:
-    - repoURL: <YOUR-REPO-URL>
+    - repoURL: https://github.com/Aditt-197/txc-lab3991
       targetRevision: main
       path: helm/install-software-hub-crds
       helm:
         releaseName: software-hub-crds
         valueFiles:
           - $overrides/overrides/values.yaml
-    - repoURL: <YOUR-REPO-URL>
+    - repoURL: https://github.com/Aditt-197/txc-lab3991/
       targetRevision: main
       ref: overrides
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: <YOUR-NAMESPACE>
+    namespace: cpd
 
   syncPolicy:
     automated:
